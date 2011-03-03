@@ -1,0 +1,10 @@
+<% form_for @article, :url => shouts_path do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+
+  <%= form.submit %>
+<% end %>
+

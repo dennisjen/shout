@@ -1,4 +1,4 @@
-class ShoutsController < ApplicationController
+class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
@@ -6,6 +6,8 @@ class ShoutsController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
+    @comment = Comment.new
+    @comments = @article.comments
   end
 
   def new

@@ -1,0 +1,19 @@
+<h2>Name: <%= @article.name %></h2>
+
+<!-- simple_format keeps the new lines using paragraphs-->
+<div>Body: <%= simple_format@article.body %></div>
+
+<h2>Comments</h2>
+<ul>
+  <% @comments.each do |comment| %>
+  <li><%= comment.body %></li>
+  <% end %>
+</ul>
+
+<% form_for [@article,@comment] do |form| %>
+  <p>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  </p>
+  <p><%= form.submit %></p>
+<% end %>

@@ -15,8 +15,13 @@ class ShoutsController < ApplicationController
   # this is what's called when you create the new article
   def create
     @article = Article.new(params[:article])
-    @article.save
-    redirect_to root_url
+    if @article.save
+      # this saves it to a cookie for a single redirect
+      flash[:notice] = 'The article has been created.'
+      redirect_to root_url, :notice => "The article has been created"
+    else
+      render :new
+    end
   end
 
 end

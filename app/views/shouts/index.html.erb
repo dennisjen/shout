@@ -2,9 +2,9 @@
 
 <ul>
   <% @articles.each do |article| %>
-    # shout_path calls the show action.
-    # article gets its id parsed out and passed b/c it's an ActiveRecord.
-    # You could do article.id or just pass in an id
+    <!-- shout_path calls the show action.
+     article gets its id parsed out and passed b/c it's an ActiveRecord.
+     You could do article.id or just pass in an id -->
     <li><%= link_to article.name, shout_path(article) %></li>
   <% end %>
 </ul>

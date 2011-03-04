@@ -18,24 +18,15 @@ describe Article do
   it "Test out getting the most recent article" do
 
     article_names = ["article name", "this is awesome", "something here" ]
-
-    article_names.each do |article_name|
-      article = Article.new(:name => article_name)
-      article.save
-    end
-
-    sorted_articles = Article.by_recency
+    old_article = Factory(:article, :created_at=>5.minutes.ago)
+    new_article = Factory(:article, :created_at=>Time.now)
+    sorted_articles = Article.by_most_recent
 
     "make sure that you're getting the correct number of articles"
-    article_names.reverse!
-    sorted_articles.length.should == article_names.length
+    sorted_articles.length.should == 2
 
     "now make sure the actual articles are in the right order"
-    i = 0
-    article_names.each do |expected_article_name|
-      expected_article.name.should == sorted_articles[ i ]
-      i.next
-    end
+    sorted_articles.should == [new_article, old_article]
 
   end
 end

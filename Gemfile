@@ -5,6 +5,7 @@ gem 'sqlite3'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.4'
+  gem "factory_girl_rails"
 end
 
 # Bundle edge Rails instead:
